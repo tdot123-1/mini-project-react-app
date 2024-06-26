@@ -1,4 +1,4 @@
-const ListItem = ({ name, country, city, deleteItem, id, price }) => {
+const ListItem = ({ name, country, city, deleteItem, id, price, image }) => {
 
     return (
         <li className="list-item">
@@ -6,7 +6,7 @@ const ListItem = ({ name, country, city, deleteItem, id, price }) => {
             <p>{country} {city}</p>
             {price < 100 && <p>Great price!</p>}
             <p>{price} €</p>
-            <button onClick={() => deleteItem(id)}>DELETE</button>
+            <button className="delete-btn" onClick={() => deleteItem(id)}>DELETE</button>
         </li>
     )
 }

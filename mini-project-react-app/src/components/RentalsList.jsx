@@ -5,10 +5,8 @@ import ListItem from "./ListItem";
 const RentalsList = () => {
 
     const apartmentsArr = rentalsData.results;
-    const favoritesArr = [];
 
     const [apartments, setApartments] = useState(apartmentsArr);
-    const [favorites, setFavorites] = useState(favoritesArr);
 
     const deleteItemFunc = (id) => {
         const updatedApartmentsArr = apartments.filter(apartment => apartment.id !== id);
@@ -26,6 +24,7 @@ const RentalsList = () => {
                 city={apartment.city}
                 price={apartment.price}
                 deleteItem={deleteItemFunc}
+                image={apartment.picture_url.url}
                 />
             ))}
         </ul>
