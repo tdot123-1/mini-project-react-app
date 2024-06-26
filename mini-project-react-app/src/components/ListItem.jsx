@@ -1,4 +1,4 @@
-const ListItem = ({ name, country, city, deleteItem, id, price, image }) => {
+const ListItem = ({ name, country, city, deleteItem, id, price}) => {
 
     return (
         <li className="list-item">

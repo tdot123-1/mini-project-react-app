@@ -24,7 +24,6 @@ const RentalsList = () => {
                 city={apartment.city}
                 price={apartment.price}
                 deleteItem={deleteItemFunc}
-                image={apartment.picture_url.url}
                 />
             ))}
         </ul>
