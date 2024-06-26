@@ -31,3 +31,10 @@ aside {
 a:hover {
   cursor: pointer;
 }
+
+.list-item {
+  list-style: none;
+  border: 2px solid blue;
+  padding: 2rem;
+  margin: 5px;
+}
