@@ -16,14 +16,16 @@ function App() {
   return (
     <div className='App'>
       <Navbar />
-      <Sidebar />
-      <Routes>
-        <Route path="/" element={ <DashboardPage />}/>
-        <Route path="/about" element={ <AboutPage /> } />
-        <Route path="/details/:apartmentId" element={<DetailsPage />} />
+      <section className='content'>
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={ <DashboardPage />}/>
+          <Route path="/about" element={ <AboutPage /> } />
+          <Route path="/details/:apartmentId" element={<DetailsPage />} />
 
-        <Route path="*" element={ <NotFoundPage /> } />
-      </Routes>
+          <Route path="*" element={ <NotFoundPage /> } />
+        </Routes>
+      </section>
       <Footer />
     </div>
   )

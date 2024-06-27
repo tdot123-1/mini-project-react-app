@@ -5,11 +5,8 @@ import RentalsList from "../components/RentalsList"
 const DashboardPage = () => {
     return (
         <div className="dashboard-page">
-            
-
-            <section>
+            <h1>Dashboard</h1>
             <RentalsList />
-            </section>
         </div>
     )
 }

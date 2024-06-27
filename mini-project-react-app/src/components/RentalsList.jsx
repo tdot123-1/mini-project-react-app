@@ -24,6 +24,7 @@ const RentalsList = () => {
                 country={apartment.country}
                 city={apartment.city}
                 price={apartment.price}
+                rating={apartment.review_scores_rating}
                 deleteItem={deleteItemFunc}
                 />
             ))}

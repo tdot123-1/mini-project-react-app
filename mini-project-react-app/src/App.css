@@ -1,5 +1,47 @@
+/* css reset */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+#root, #__next {
+  isolation: isolate;
+}
+
+/* styles 
+
+light blue: rgb(137, 169, 229)
+dark blue: rgb(4, 4, 186)
+darker blue: rgb(1, 1, 90)
+red: rgb(232, 34, 34)
+
+*/
+
 .App {
   font-family: sans-serif;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: rgb(1, 1, 90)
 }
 
 .nav-bar {
@@ -7,9 +49,9 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  background-color: blue;
+  background-color: rgb(4, 4, 186);
   color: white;
-  padding: 10px;
+  padding: 1rem;
 }
 
 aside {
@@ -22,38 +64,137 @@ aside {
 }
 
 .footer {
-  position: fixed;
-  bottom: 0;
-  background-color: blue;
+  background-color: rgb(4, 4, 186);
   color: white;
   width: 100%;
   text-align: center;
 }
 
-a:hover {
-  cursor: pointer;
+.content {
+  margin: 0 1rem;
+}
+
+.apartments-list {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .list-item {
-  list-style: none;
-  border: 2px solid blue;
+  border: 2px solid rgb(4, 4, 186);
   padding: 2rem;
-  margin: 5px;
   color: white;
-  background-color: cornflowerblue;
+  background-color: rgb(137, 169, 229);
   border-radius: 10px;
+  margin-bottom: 1rem;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.list-item p {
+  border-bottom: 2px solid white;
+}
+
+.list-item .labels-div {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.list-item .label {
+  padding: 5px;
+  border-radius: 50%;
+  border: none;
+  margin-bottom: 3px;
+}
+
+.list-item .label.deal {
+  background-color: rgb(232, 34, 34);
+}
+
+.list-item .label.rating {
+  background-color: rgb(180, 164, 61);
+}
+
+.list-item h3 {
+  color: white;
+}
+
+.list-item h3:hover {
+  text-decoration: underline;
+}
+
+.list-item span {
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
 }
 
 .delete-btn {
   font-size: 1rem;
-  height: 1.5rem;
   border: none;
-  background-color: blue;
+  background-color: rgb(4, 4, 186);
   color: white;
   font-weight: bold;
+  width: fit-content;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .delete-btn:hover {
   cursor: pointer;
-  background-color: darkblue;
+  background-color: rgb(1, 1, 90);
 }
+
+.details-page .tables-div {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.details-page .tables-div .table {
+  text-align: left;
+  padding: 1rem;
+}
+
+.details-page .tables-div .table .table-head {
+  padding-bottom: 2rem;
+
+}
+
+.details-page .tables-div .table th {
+  color: rgb(1, 1, 90);
+  border-bottom: 1px solid rgb(1, 1, 90);
+}
+
+.details-page .description {
+  background-color: rgb(137, 169, 229);
+  color: white;
+  border: 2px solid rgb(4, 4, 186);
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+.details-page .description h2 {
+  color: rgb(4, 4, 186);
+  margin-top: 1rem;
+}
+
+.details-page .review-score {
+  margin-top: 1rem;
+
+}
+
+.details-page .review-score span {
+  font-weight: bold;
+  color: rgb(4, 4, 186)
+}
+
+/* border: 1px solid rgb(1, 1, 90); */
