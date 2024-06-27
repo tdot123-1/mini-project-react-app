@@ -1,8 +1,20 @@
+import { Link, NavLink } from "react-router-dom";
+
 const Sidebar = () => {
     return (
         <aside>
-            <a src="#">Home</a>
-            <a src="#">About</a>
+            <NavLink to="/"
+            style={({ isActive }) => ({
+                color: isActive ? "red" :
+                "blue"
+            })}
+            >Home</NavLink>
+            <NavLink to="/about"
+            style={({ isActive }) => ({
+                color: isActive ? "red" :
+                "blue"
+            })}
+            >About</NavLink>
         </aside>
     )
 }
