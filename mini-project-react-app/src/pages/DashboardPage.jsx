@@ -4,7 +4,7 @@ import RentalsList from "../components/RentalsList"
 
 const DashboardPage = () => {
     return (
-        <div class="dashboard-page">
+        <div className="dashboard-page">
             
 
             <section>

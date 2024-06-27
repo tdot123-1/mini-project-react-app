@@ -2,6 +2,7 @@ import rentalsData from "../assets/rental-data/rentals.json"
 import { useState } from "react"
 import ListItem from "./ListItem";
 
+
 const RentalsList = () => {
 
     const apartmentsArr = rentalsData.results;
