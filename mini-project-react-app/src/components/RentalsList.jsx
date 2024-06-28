@@ -1,18 +1,7 @@
-import rentalsData from "../assets/rental-data/rentals.json"
-import { useState } from "react"
 import ListItem from "./ListItem";
 
 
-const RentalsList = () => {
-
-    const apartmentsArr = rentalsData.results;
-
-    const [apartments, setApartments] = useState(apartmentsArr);
-
-    const deleteItemFunc = (id) => {
-        const updatedApartmentsArr = apartments.filter(apartment => apartment.id !== id);
-        setApartments(updatedApartmentsArr);
-    }
+const RentalsList = ({ handleDelete, apartments }) => {
 
     return (
         <ul className="apartments-list">
@@ -25,7 +14,8 @@ const RentalsList = () => {
                 city={apartment.city}
                 price={apartment.price}
                 rating={apartment.review_scores_rating}
-                deleteItem={deleteItemFunc}
+                handleDelete={handleDelete}
+                apartments={apartments}
                 />
             ))}
         </ul>

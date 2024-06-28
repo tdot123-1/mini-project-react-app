@@ -1,17 +1,14 @@
 import { useParams } from "react-router-dom";
-import rentalsData from "../assets/rental-data/rentals.json"
 
 
-const DetailsPage = () => {
+
+const DetailsPage = ({ apartments }) => {
 
     // get current id from parameters
     const { apartmentId } = useParams();
 
-    // get array from rentals data
-    const apartmentsArr = rentalsData.results;
-
     // find current apartment by id
-    const currentApartment = apartmentsArr.find((apartment) => apartment.id === apartmentId);
+    const currentApartment = apartments.find((apartment) => apartment.id === apartmentId);
 
     return (
         <div className="details-page">

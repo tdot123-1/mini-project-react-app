@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const ListItem = ({ name, country, city, deleteItem, id, price, rating}) => {
+const ListItem = ({ name, country, city, handleDelete, id, price, rating, apartments}) => {
 
 
     return (
@@ -14,7 +14,7 @@ const ListItem = ({ name, country, city, deleteItem, id, price, rating}) => {
                 {rating > 90 && <p className="label rating">Top Rated!</p>}
             </div>
             <p><span>Price: </span>{price} €</p>
-            <button className="delete-btn" onClick={() => deleteItem(id)}>DELETE</button>
+            <button className="delete-btn" onClick={() => handleDelete(id, apartments)}>DELETE</button>
         </li>
     )
 }
