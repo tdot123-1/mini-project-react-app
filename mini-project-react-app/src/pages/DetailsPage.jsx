@@ -1,6 +1,4 @@
-import { useParams } from "react-router-dom";
-
-
+import { useParams, Link } from "react-router-dom";
 
 const DetailsPage = ({ apartments }) => {
 
@@ -13,6 +11,10 @@ const DetailsPage = ({ apartments }) => {
     return (
         <div className="details-page">
             <h1>{currentApartment.name}</h1>
+            <Link to={`/edit-rental/${currentApartment.id}`}>
+                <button>Edit</button>
+            </Link>
+            
             <article className="description">
                 <p>{currentApartment.description}</p>
                 <h2>{currentApartment.host_name}</h2>
@@ -36,7 +38,7 @@ const DetailsPage = ({ apartments }) => {
                             <td>{currentApartment.room_type}</td>
                         </tr>
                         <tr>
-                            <th>Accomodates:</th>
+                            <th>Accommodates:</th>
                             <td>{currentApartment.accommodates}</td>
                         </tr>
                         

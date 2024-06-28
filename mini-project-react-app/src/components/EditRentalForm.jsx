@@ -1,42 +1,23 @@
-import { useState } from "react";
+import { useState } from "react"
 
-const AddRentalForm = ({ handleAddRental }) => {
+const EditRentalForm = ({ currentApartment, handleEditRental }) => {
 
-    // current state of form info
-    const [formInput, setFormInput] = useState({
-        name: "",
-        city: "",
-        country: "",
-        price: 1,
-        description: "",
-        host_name: "",
-        property_type: "",
-        room_type: "",
-        accommodates: 1,
-        bedrooms: 1,
-        beds: 1,
-        bathrooms: 1,
-        cleaning_fee: 0,
+    const [formInput, setFormInput] =  useState({
+
+        name: currentApartment.name,
+        city: currentApartment.city,
+        country: currentApartment.country,
+        price: currentApartment.price,
+        description: currentApartment.description,
+        host_name: currentApartment.host_name,
+        property_type: currentApartment.property_type,
+        room_type: currentApartment.room_type,
+        accommodates: currentApartment.accommodates,
+        bedrooms: currentApartment.bedrooms,
+        beds: currentApartment.bed,
+        bathrooms: currentApartment.bathrooms,
+        cleaning_fee: currentApartment.cleaning_fee,
     });
-
-    // set to empty form after submit
-    const resetForm = () => {
-        setFormInput({
-            name: "",
-            city: "",
-            country: "",
-            price: 1,
-            description: "",
-            host_name: "",
-            property_type: "",
-            room_type: "",
-            accomodates: 1,
-            bedrooms: 1,
-            beds: 1,
-            bathrooms: 1,
-            cleaning_fee: 0,
-        });
-    }
 
     // handle form input, update existing state
     const handleInput = (event) => {
@@ -50,15 +31,15 @@ const AddRentalForm = ({ handleAddRental }) => {
     // prevent default, add to list of rentals, reset input fields
     const handleSubmit = (event) => {
         event.preventDefault();
-        handleAddRental(formInput);
-        resetForm();
+        handleEditRental(formInput, currentApartment.id);
+        //resetForm();
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <label>
                 Name
-                <input type="text" placeholder="Name of your apartment"
+                <input type="text" 
                     name="name"
                     value={formInput.name}
                     onChange={handleInput}
@@ -198,4 +179,4 @@ const AddRentalForm = ({ handleAddRental }) => {
     )
 }
 
-export default AddRentalForm;
+export default EditRentalForm;
