@@ -66,7 +66,7 @@ function App() {
     changedRental.room_type = formInput.room_type;
     changedRental.accommodates = formInput.accommodates;
     changedRental.bedrooms = formInput.bedrooms;
-    changedRental.beds = formInput.bed;
+    changedRental.beds = formInput.beds;
     changedRental.bathrooms = formInput.bathrooms;
     changedRental.cleaning_fee = formInput.cleaning_fee;
 

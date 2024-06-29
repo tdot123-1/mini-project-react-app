@@ -11,9 +11,13 @@ const DetailsPage = ({ apartments }) => {
     return (
         <div className="details-page">
             <h1>{currentApartment.name}</h1>
-            <Link to={`/edit-rental/${currentApartment.id}`}>
-                <button>Edit</button>
-            </Link>
+
+            <div className="btn-div edit-btn-div">
+                <Link to={`/edit-rental/${currentApartment.id}`}>
+                    <button className="button">Edit</button>
+                </Link>
+            </div>
+            
             
             <article className="description">
                 <p>{currentApartment.description}</p>

@@ -14,7 +14,7 @@ const ListItem = ({ name, country, city, handleDelete, id, price, rating, apartm
                 {rating > 90 && <p className="label rating">Top Rated!</p>}
             </div>
             <p><span>Price: </span>{price} €</p>
-            <button className="delete-btn" onClick={() => handleDelete(id, apartments)}>DELETE</button>
+            <button className="delete-btn button" onClick={() => handleDelete(id, apartments)}>DELETE</button>
         </li>
     )
 }

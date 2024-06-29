@@ -71,7 +71,7 @@ aside {
 }
 
 .content {
-  margin: 0 1rem;
+  margin: 0 1rem 1rem;
 }
 
 .apartments-list {
@@ -137,7 +137,7 @@ a {
   text-decoration: none;
 }
 
-.delete-btn {
+.button {
   font-size: 1rem;
   border: none;
   background-color: rgb(4, 4, 186);
@@ -146,11 +146,22 @@ a {
   width: fit-content;
   border-radius: 5px;
   padding: 5px;
+  text-transform: uppercase;
 }
 
-.delete-btn:hover {
+.button:hover {
   cursor: pointer;
   background-color: rgb(1, 1, 90);
+}
+
+.btn-div {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+.edit-btn-div {
+  justify-content: flex-end;
 }
 
 .details-page .tables-div {
@@ -196,5 +207,29 @@ a {
   font-weight: bold;
   color: rgb(4, 4, 186)
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 75%
+}
+
+.form label {
+  color: rgb(1, 1, 90);
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form input, .form select, .form textarea {
+  color: rgb(4, 4, 186);
+  font-weight: 300;
+  margin-left: 1rem;
+  width: 60%;
+}
+
+
 
 /* border: 1px solid rgb(1, 1, 90); */

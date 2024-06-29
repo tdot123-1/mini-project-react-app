@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddRentalForm = ({ handleAddRental }) => {
+
+    const navigate = useNavigate();
 
     // current state of form info
     const [formInput, setFormInput] = useState({
@@ -30,7 +33,7 @@ const AddRentalForm = ({ handleAddRental }) => {
             host_name: "",
             property_type: "",
             room_type: "",
-            accomodates: 1,
+            accommodates: 1,
             bedrooms: 1,
             beds: 1,
             bathrooms: 1,
@@ -52,22 +55,26 @@ const AddRentalForm = ({ handleAddRental }) => {
         event.preventDefault();
         handleAddRental(formInput);
         resetForm();
+        navigate("/");
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form">
+      
             <label>
-                Name
+                Name:
                 <input type="text" placeholder="Name of your apartment"
+                    required
                     name="name"
                     value={formInput.name}
                     onChange={handleInput}
                 />
             </label>
-
+            
             <label>
-                City
-                <input type="text" 
+                City:
+                <input type="text"
+                    required
                     name="city"
                     value={formInput.city}
                     onChange={handleInput}
@@ -75,8 +82,9 @@ const AddRentalForm = ({ handleAddRental }) => {
             </label>
 
             <label>
-                Country
+                Country:
                 <input type="text"
+                    required
                     name="country"
                     value={formInput.country}
                     onChange={handleInput}
@@ -84,8 +92,9 @@ const AddRentalForm = ({ handleAddRental }) => {
             </label>
 
             <label>
-                Price
+                Price: €
                 <input type="number" placeholder="Total price in euros"
+                    required
                     min={1}
                     max={9999}
                     name="price"
@@ -95,8 +104,9 @@ const AddRentalForm = ({ handleAddRental }) => {
             </label>
 
             <label>
-                Description
-                <input type="textarea"
+                Description:
+                <textarea rows="5" cols="33"
+                    required
                     name="description"
                     value={formInput.description}
                     onChange={handleInput}
@@ -104,8 +114,9 @@ const AddRentalForm = ({ handleAddRental }) => {
             </label>
 
             <label>
-                Host name
+                Host name:
                 <input type="text"
+                    required
                     name="host_name"
                     value={formInput.host_name}
                     onChange={handleInput}
@@ -113,8 +124,9 @@ const AddRentalForm = ({ handleAddRental }) => {
             </label>
 
             <label>
-                Property type
+                Property type:
                 <select name="property_type"
+                    required
                     value={formInput.property_type}
                     onChange={handleInput}
                 >
@@ -126,8 +138,9 @@ const AddRentalForm = ({ handleAddRental }) => {
             </label>
 
             <label>
-                Room type
+                Room type:
                 <select name="room_type"
+                    required
                     value={formInput.room_type}
                     onChange={handleInput}
                 >
@@ -139,19 +152,21 @@ const AddRentalForm = ({ handleAddRental }) => {
             </label>
 
             <label>
-                Accommodates
-                <input type="number" 
+                Accommodates:
+                <input type="number"
+                    required 
                     min={1}
                     max={99}
-                    name="accomodates"
+                    name="accommodates"
                     value={formInput.accommodates}
                     onChange={handleInput}
                 />
             </label>
 
             <label>
-                Bedrooms
-                <input type="number" 
+                Bedrooms:
+                <input type="number"
+                    required
                     min={1} 
                     max={99}
                     name="bedrooms"
@@ -161,8 +176,9 @@ const AddRentalForm = ({ handleAddRental }) => {
             </label>
 
             <label>
-                Beds
+                Beds:
                 <input type="number" 
+                    required
                     min={1}
                     max={99}
                     name="beds"
@@ -172,8 +188,9 @@ const AddRentalForm = ({ handleAddRental }) => {
             </label>
 
             <label>
-                Bathrooms
+                Bathrooms:
                 <input type="number"
+                    required
                     min={1}
                     max={99} 
                     name="bathrooms"
@@ -183,8 +200,9 @@ const AddRentalForm = ({ handleAddRental }) => {
             </label>
 
             <label>
-                Cleaning fee
+                Cleaning fee:
                 <input type="number" 
+                    required
                     min={0}
                     max={9999}
                     name="cleaning_fee"
@@ -192,8 +210,9 @@ const AddRentalForm = ({ handleAddRental }) => {
                     onChange={handleInput}
                 />
             </label>
-
-            <button type="submit">Submit</button>
+            <div className="btn-div">
+                <button type="submit" className="button">Submit</button>
+            </div>
         </form>
     )
 }

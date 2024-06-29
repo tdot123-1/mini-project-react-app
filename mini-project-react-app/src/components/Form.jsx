@@ -1,26 +1,20 @@
-import { useState } from "react"
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const EditRentalForm = ({ currentApartment, handleEditRental }) => {
+// general form used for edit && add
+// pass correct function from App, initialState + currentApartment from page
+
+const Form = ({ handleFormData, currentApartment, initialState }) => {
 
     const navigate = useNavigate();
 
-    const [formInput, setFormInput] =  useState({
+    // current state of form info
+    const [formInput, setFormInput] = useState(initialState);
 
-        name: currentApartment.name,
-        city: currentApartment.city,
-        country: currentApartment.country,
-        price: currentApartment.price,
-        description: currentApartment.description,
-        host_name: currentApartment.host_name,
-        property_type: currentApartment.property_type,
-        room_type: currentApartment.room_type,
-        accommodates: currentApartment.accommodates,
-        bedrooms: currentApartment.bedrooms,
-        beds: currentApartment.beds,
-        bathrooms: currentApartment.bathrooms,
-        cleaning_fee: currentApartment.cleaning_fee,
-    });
+    // set to empty form after submit
+    const resetForm = () => {
+        setFormInput(initialState);
+    }
 
     // handle form input, update existing state
     const handleInput = (event) => {
@@ -34,24 +28,30 @@ const EditRentalForm = ({ currentApartment, handleEditRental }) => {
     // prevent default, add to list of rentals, reset input fields
     const handleSubmit = (event) => {
         event.preventDefault();
-        handleEditRental(formInput, currentApartment.id);
-        navigate(`/details/${currentApartment.id}`);
+        handleFormData(formInput);
+        resetForm();
+        currentApartment ?
+        navigate(`details/${currentApartment.id}`) :
+        navigate("/");
     }
 
     return (
         <form onSubmit={handleSubmit} className="form">
+      
             <label>
                 Name:
-                <input type="text" 
+                <input type="text" placeholder="Name of your apartment"
+                    required
                     name="name"
                     value={formInput.name}
                     onChange={handleInput}
                 />
             </label>
-
+            
             <label>
                 City:
-                <input type="text" 
+                <input type="text"
+                    required
                     name="city"
                     value={formInput.city}
                     onChange={handleInput}
@@ -61,6 +61,7 @@ const EditRentalForm = ({ currentApartment, handleEditRental }) => {
             <label>
                 Country:
                 <input type="text"
+                    required
                     name="country"
                     value={formInput.country}
                     onChange={handleInput}
@@ -68,8 +69,9 @@ const EditRentalForm = ({ currentApartment, handleEditRental }) => {
             </label>
 
             <label>
-                Price:
+                Price: €
                 <input type="number" placeholder="Total price in euros"
+                    required
                     min={1}
                     max={9999}
                     name="price"
@@ -81,6 +83,7 @@ const EditRentalForm = ({ currentApartment, handleEditRental }) => {
             <label>
                 Description:
                 <textarea rows="5" cols="33"
+                    required
                     name="description"
                     value={formInput.description}
                     onChange={handleInput}
@@ -90,6 +93,7 @@ const EditRentalForm = ({ currentApartment, handleEditRental }) => {
             <label>
                 Host name:
                 <input type="text"
+                    required
                     name="host_name"
                     value={formInput.host_name}
                     onChange={handleInput}
@@ -99,6 +103,7 @@ const EditRentalForm = ({ currentApartment, handleEditRental }) => {
             <label>
                 Property type:
                 <select name="property_type"
+                    required
                     value={formInput.property_type}
                     onChange={handleInput}
                 >
@@ -112,6 +117,7 @@ const EditRentalForm = ({ currentApartment, handleEditRental }) => {
             <label>
                 Room type:
                 <select name="room_type"
+                    required
                     value={formInput.room_type}
                     onChange={handleInput}
                 >
@@ -124,10 +130,11 @@ const EditRentalForm = ({ currentApartment, handleEditRental }) => {
 
             <label>
                 Accommodates:
-                <input type="number" 
+                <input type="number"
+                    required 
                     min={1}
                     max={99}
-                    name="accomodates"
+                    name="accommodates"
                     value={formInput.accommodates}
                     onChange={handleInput}
                 />
@@ -135,7 +142,8 @@ const EditRentalForm = ({ currentApartment, handleEditRental }) => {
 
             <label>
                 Bedrooms:
-                <input type="number" 
+                <input type="number"
+                    required
                     min={1} 
                     max={99}
                     name="bedrooms"
@@ -147,6 +155,7 @@ const EditRentalForm = ({ currentApartment, handleEditRental }) => {
             <label>
                 Beds:
                 <input type="number" 
+                    required
                     min={1}
                     max={99}
                     name="beds"
@@ -158,6 +167,7 @@ const EditRentalForm = ({ currentApartment, handleEditRental }) => {
             <label>
                 Bathrooms:
                 <input type="number"
+                    required
                     min={1}
                     max={99} 
                     name="bathrooms"
@@ -169,6 +179,7 @@ const EditRentalForm = ({ currentApartment, handleEditRental }) => {
             <label>
                 Cleaning fee:
                 <input type="number" 
+                    required
                     min={0}
                     max={9999}
                     name="cleaning_fee"
@@ -183,4 +194,4 @@ const EditRentalForm = ({ currentApartment, handleEditRental }) => {
     )
 }
 
-export default EditRentalForm;
+export default Form;
