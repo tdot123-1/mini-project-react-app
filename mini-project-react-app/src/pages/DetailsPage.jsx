@@ -63,7 +63,7 @@ const DetailsPage = ({ apartments }) => {
                 <table className="price-details table">
                     <thead>
                         <tr>
-                            <th className="table-head">Property details</th>
+                            <th className="table-head">Pricing details</th>
                         </tr>
                     </thead>
                     <tbody>

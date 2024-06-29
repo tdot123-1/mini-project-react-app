@@ -1,7 +1,4 @@
-// add navigation after submitting forms
-// rethink page structure (?)
-// style forms
-
+// work on 'AboutPage'
 
 import './App.css'
 import Navbar from './components/Navbar'
@@ -40,43 +37,47 @@ function App() {
   // add rental to list of apartments
   const handleAddRental = (formInput) => {
 
+    // get new array of current state of rentals list
     const prevState = [...apartments];
 
+    // generate unique id
     const newId = uuidv4();
 
+    // create new rental list item from form input
     const newRental = formInput;
     newRental.id = newId
 
+    // add to start of array, set state 
     const updatedApartments = [newRental, ...prevState];
 
     setApartments(updatedApartments)
   }
 
+
+  // update existing rental
   const handleEditRental = (formInput, id) => {
+
+    // find rental to be changed from array of rentals
     const changedRental = apartments.find((apartment) => apartment.id === id);
 
-    // need to update
-    changedRental.name = formInput.name;
-    changedRental.city = formInput.city;
-    changedRental.country = formInput.country;
-    changedRental.price = formInput.price;
-    changedRental.description = formInput.description;
-    changedRental.host_name = formInput.host_name;
-    changedRental.property_type = formInput.property_type;
-    changedRental.room_type = formInput.room_type;
-    changedRental.accommodates = formInput.accommodates;
-    changedRental.bedrooms = formInput.bedrooms;
-    changedRental.beds = formInput.beds;
-    changedRental.bathrooms = formInput.bathrooms;
-    changedRental.cleaning_fee = formInput.cleaning_fee;
+    // populate rental object with existing properties and info from form
+    const updatedRental = {
+      ...changedRental,
+      ...formInput,
+    }
 
+    // get copy of previous state
     const prevState = [...apartments];
 
-    setApartments(prevState) ;
+    //create new array by updating editted apartment and copying the rest of the list 
+    const updatedApartments = prevState.map((apartment) => (
+      apartment.id === id ? 
+      updatedRental : 
+      apartment));
 
+    setApartments(updatedApartments);
   }
 
-  
   return (
     <div className='App'>
       <Navbar />

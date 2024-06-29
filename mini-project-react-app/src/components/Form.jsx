@@ -2,21 +2,22 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // general form used for edit && add
-// pass correct function from App, initialState + currentApartment from page
+// handle data function is passed down from App 
+// initialState + currentApartment are passed down from page
 
-const Form = ({ handleFormData, currentApartment, initialState }) => {
+const Form = ({ handleFormData, initialState, currentApartment }) => {
 
     const navigate = useNavigate();
 
     // current state of form info
     const [formInput, setFormInput] = useState(initialState);
 
-    // set to empty form after submit
+    // reset form to initial state after submit
     const resetForm = () => {
         setFormInput(initialState);
     }
 
-    // handle form input, update existing state
+    // handle form input, update existing form state
     const handleInput = (event) => {
         const newInput = event.target.value;
         setFormInput((prevState) => ({
@@ -25,13 +26,23 @@ const Form = ({ handleFormData, currentApartment, initialState }) => {
         }));
     }
 
-    // prevent default, add to list of rentals, reset input fields
+    // prevent default, handle data, reset input fields
     const handleSubmit = (event) => {
         event.preventDefault();
-        handleFormData(formInput);
+        
+        // if an existing item is updated, have an id to pass to function
+        let id;
+
+        if (currentApartment) {
+            id = currentApartment.id
+        }
+
+        // handle form data in App, reset form, navigate to correct page
+        handleFormData(formInput, id);
         resetForm();
+
         currentApartment ?
-        navigate(`details/${currentApartment.id}`) :
+        navigate(`/details/${currentApartment.id}`) :
         navigate("/");
     }
 
@@ -108,9 +119,9 @@ const Form = ({ handleFormData, currentApartment, initialState }) => {
                     onChange={handleInput}
                 >
                     <option value="">--Select property type--</option>
-                    <option value="apartment">Apartment</option>
-                    <option value="house">House</option>
-                    <option value="other">Other</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="House">House</option>
+                    <option value="Other">Other</option>
                 </select>
             </label>
 
