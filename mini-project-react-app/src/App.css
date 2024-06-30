@@ -44,6 +44,10 @@ h1 {
   color: rgb(1, 1, 90)
 }
 
+h2, h3 {
+  color: rgb(1, 1, 90)
+}
+
 .nav-bar {
   display: flex;
   width: 100%;
@@ -230,6 +234,10 @@ a {
   width: 60%;
 }
 
-
+.team-members-div {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
 
 /* border: 1px solid rgb(1, 1, 90); */

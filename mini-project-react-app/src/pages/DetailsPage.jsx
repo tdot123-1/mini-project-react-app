@@ -77,7 +77,7 @@ const DetailsPage = ({ apartments }) => {
                         </tr>
                         <tr>
                             <th>Total cost:</th>
-                            <td>€ {currentApartment.price + currentApartment.cleaning_fee},-</td>
+                            <td>€ {parseInt(currentApartment.price) + parseInt(currentApartment.cleaning_fee)},-</td>
                         </tr>
                     </tbody>
                 </table>
