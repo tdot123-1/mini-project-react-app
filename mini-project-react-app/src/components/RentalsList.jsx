@@ -16,7 +16,6 @@ const RentalsList = ({ handleDelete, apartments, handleFavorite }) => {
                 rating={apartment.review_scores_rating}
                 isFavorite={apartment.favorite}
                 handleDelete={handleDelete}
-                apartments={apartments}
                 handleFavorite={handleFavorite}
                 />
             ))}

@@ -30,6 +30,8 @@ light blue: rgb(137, 169, 229)
 dark blue: rgb(4, 4, 186)
 darker blue: rgb(1, 1, 90)
 red: rgb(232, 34, 34)
+light green: rgb(83, 194, 83)
+dark green: rgb(44, 113, 44)
 
 */
 
@@ -118,6 +120,7 @@ aside {
   border-radius: 50%;
   border: none;
   margin-bottom: 3px;
+  text-shadow: 3px 3px 3px black;
 }
 
 .list-item .label.deal {
@@ -154,18 +157,34 @@ a {
   border-radius: 5px;
   padding: 5px;
   text-transform: uppercase;
+  box-shadow: 3px 3px rgb(1, 1, 90);
 }
 
 .button:hover {
   cursor: pointer;
   background-color: rgb(1, 1, 90);
+  box-shadow: none;
+}
 
+.favorite {
+  background-color: rgb(83, 194, 83);
+  box-shadow: 3px 3px rgb(44, 113, 44);
+}
+
+.favorite:hover {
+  background-color: rgb(44, 113, 44);
 }
 
 .btn-div {
   display: flex;
   justify-content: center;
   padding-bottom: 1rem;
+}
+
+li .btn-div {
+  padding: 0;
+  margin-top: 1rem;
+  justify-content: space-around;
 }
 
 .edit-btn-div {
@@ -261,6 +280,12 @@ a {
 
 .app-logo {
   max-width: 32px;
+}
+
+.favorites-page .warning {
+  text-align: center;
+  font-style: italic;
+  padding: 4rem 0 15rem;
 }
 
 /* border: 1px solid rgb(1, 1, 90); */

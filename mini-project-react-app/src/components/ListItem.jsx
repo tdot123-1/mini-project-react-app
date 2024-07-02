@@ -8,14 +8,9 @@ const ListItem = ({
     id, 
     price, 
     rating,
-    isFavorite, 
-    apartments, 
+    isFavorite,  
     handleFavorite,
 }) => {
-
-    const bgColor = {
-        backgroundColor: isFavorite ? "rgb(93, 186, 93)" : "rgb(4, 4, 186)"
-    }
 
     return (
         <li className="list-item">
@@ -28,14 +23,23 @@ const ListItem = ({
                 {rating > 90 && <p className="label rating">Top Rated!</p>}
             </div>
             <p><span>Price: </span>{price} €</p>
-            {handleDelete && <button className="delete-btn button" onClick={() => handleDelete(id, apartments)}>DELETE</button>}
-            <button className="button" onClick={() => handleFavorite(id, apartments)} 
-            style={{backgroundColor: isFavorite ? "rgb(93, 186, 93)" : "rgb(4, 4, 186)"}}>
-                {isFavorite ?
-                 <span>unfavorite</span> :
-                 <span>favorite</span>
-                }
-            </button>
+            <div className="btn-div">
+
+                {handleDelete && 
+                <button className="delete-btn button" 
+                onClick={() => handleDelete(id)}>
+                    DELETE
+                </button>}
+                <button 
+                    className={`button ${isFavorite && "favorite"}`} 
+                    onClick={() => handleFavorite(id)} 
+                >
+                    {isFavorite ?
+                    "unfavorite" :
+                    "favorite"
+                    }
+                </button>
+            </div>
         </li>
     )
 }

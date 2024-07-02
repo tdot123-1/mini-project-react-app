@@ -20,31 +20,37 @@ import { v4 as uuidv4 } from "uuid"
 import { Route, Routes, } from 'react-router-dom'
 import { useState } from 'react'
 
-// lift up state 
-
 function App() {
 
-  const apartmentsArr = rentalsData.results;
+  //const apartmentsArr = rentalsData.results;
 
-  const [apartments, setApartments] = useState(apartmentsArr);
+  const [apartments, setApartments] = useState(rentalsData.results);
 
   const [favorites, setFavorites] = useState([]);
 
   // handle delete by using array and current array of apartments (rentals)
-  const handleDelete = (id, rentals) => {
-    // delete from favorites  
+  const handleDelete = (id) => {
+    // delete from favorites 
+    /* 
     const updatedFavs = favorites.filter(apartment => apartment.id !== id);
     setFavorites(updatedFavs);
+    */
+
+    setFavorites((prevState) => (prevState.filter(apartment => apartment.id !== id)));
 
     // delete from dashboard
-    const prevState = [...rentals];
-    const updatedApartmentsArr = prevState.filter(apartment => apartment.id !== id);
+    /*
+    const updatedApartmentsArr = apartments.filter(apartment => apartment.id !== id);
     setApartments(updatedApartmentsArr);
+    */
+    
+    setApartments((prevState) => (prevState.filter(apartment => apartment.id !== id)));
   }
 
   // handle favorites
-  const handleFavorite = (id, rentals) => {
+  const handleFavorite = (id) => {
 
+    /*
     const addedToFav = rentals.find(rental => rental.id === id);
 
     if (addedToFav.favorite) {
@@ -59,13 +65,30 @@ function App() {
 
       setFavorites((prevState) => ([addedToFav, ...prevState]))
     }
+    */
+
+    // handle add/remove from list of favorites
+    setFavorites((prevState) => { 
+      // find rental in 'apartments' state var by id
+      const rental = apartments.find(apartment => apartment.id === id);
+
+      // copy rental object and update its favorite prop
+      const updatedRental = {...rental, favorite: !rental.favorite };
+
+      // either add rental to list of favs or remove from list of favs
+      return updatedRental.favorite ?
+      [updatedRental, ...prevState] :
+      prevState.filter(apartment => apartment.id !== id)
+    });
+
+    // set apartments to reflect change in 'favorite' property
+    setApartments((prevState) => prevState.map(apartment => 
+      apartment.id === id ? {...apartment, favorite: !apartment.favorite} : apartment
+    ));
   }
 
   // add rental to list of apartments
   const handleAddRental = (formInput) => {
-
-    // get new array of current state of rentals list
-    const prevState = [...apartments];
 
     // generate unique id
     const newId = uuidv4();
@@ -74,16 +97,15 @@ function App() {
     const newRental = formInput;
     newRental.id = newId
 
-    // add to start of array, set state 
-    const updatedApartments = [newRental, ...prevState];
-
-    setApartments(updatedApartments)
+    // set state of apartments array
+    setApartments((prevState) => ([newRental, ...prevState]));
   }
 
 
   // update existing rental
   const handleEditRental = (formInput, id) => {
 
+    /*
     // find rental to be changed from array of rentals
     const changedRental = apartments.find((apartment) => apartment.id === id);
 
@@ -103,6 +125,29 @@ function App() {
       apartment));
 
     setApartments(updatedApartments);
+    */
+
+    // functional update to apartments state,
+    setApartments((prevState) =>
+
+      // map over most recent state
+      prevState.map((apartment) =>
+
+        // if id matches, set object properties with form input
+        apartment.id === id ?
+        {...apartment, ...formInput}
+        : apartment
+      ) 
+    );
+
+    // make sure favorites list also reflects changes to item 
+    setFavorites((prevState) => 
+      prevState.map((apartment) => 
+        apartment.id === id ?
+        {...apartment, ...formInput} :
+        apartment
+      )
+    );
   }
 
   return (
