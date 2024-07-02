@@ -1,7 +1,21 @@
 import { Link } from "react-router-dom";
 
-const ListItem = ({ name, country, city, handleDelete, id, price, rating, apartments}) => {
+const ListItem = ({ 
+    name, 
+    country, 
+    city, 
+    handleDelete, 
+    id, 
+    price, 
+    rating,
+    isFavorite, 
+    apartments, 
+    handleFavorite,
+}) => {
 
+    const bgColor = {
+        backgroundColor: isFavorite ? "rgb(93, 186, 93)" : "rgb(4, 4, 186)"
+    }
 
     return (
         <li className="list-item">
@@ -14,7 +28,14 @@ const ListItem = ({ name, country, city, handleDelete, id, price, rating, apartm
                 {rating > 90 && <p className="label rating">Top Rated!</p>}
             </div>
             <p><span>Price: </span>{price} €</p>
-            <button className="delete-btn button" onClick={() => handleDelete(id, apartments)}>DELETE</button>
+            {handleDelete && <button className="delete-btn button" onClick={() => handleDelete(id, apartments)}>DELETE</button>}
+            <button className="button" onClick={() => handleFavorite(id, apartments)} 
+            style={{backgroundColor: isFavorite ? "rgb(93, 186, 93)" : "rgb(4, 4, 186)"}}>
+                {isFavorite ?
+                 <span>unfavorite</span> :
+                 <span>favorite</span>
+                }
+            </button>
         </li>
     )
 }

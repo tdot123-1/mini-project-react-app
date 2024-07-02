@@ -1,7 +1,7 @@
 import ListItem from "./ListItem";
 
 
-const RentalsList = ({ handleDelete, apartments }) => {
+const RentalsList = ({ handleDelete, apartments, handleFavorite }) => {
 
     return (
         <ul className="apartments-list">
@@ -14,8 +14,10 @@ const RentalsList = ({ handleDelete, apartments }) => {
                 city={apartment.city}
                 price={apartment.price}
                 rating={apartment.review_scores_rating}
+                isFavorite={apartment.favorite}
                 handleDelete={handleDelete}
                 apartments={apartments}
+                handleFavorite={handleFavorite}
                 />
             ))}
         </ul>

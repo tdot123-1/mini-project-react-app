@@ -10,6 +10,7 @@ import AboutPage from './pages/AboutPage'
 import DetailsPage from './pages/DetailsPage'
 import AddRentalPage from './pages/AddRentalPage'
 import EditRentalPage from './pages/EditRentalPage'
+import FavoritesPage from './pages/FavoritesPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 import rentalsData from "./assets/rental-data/rentals.json"
@@ -27,11 +28,37 @@ function App() {
 
   const [apartments, setApartments] = useState(apartmentsArr);
 
+  const [favorites, setFavorites] = useState([]);
+
   // handle delete by using array and current array of apartments (rentals)
   const handleDelete = (id, rentals) => {
-      const prevState = [...rentals];
-      const updatedApartmentsArr = prevState.filter(apartment => apartment.id !== id);
-      setApartments(updatedApartmentsArr);
+    // delete from favorites  
+    const updatedFavs = favorites.filter(apartment => apartment.id !== id);
+    setFavorites(updatedFavs);
+
+    // delete from dashboard
+    const prevState = [...rentals];
+    const updatedApartmentsArr = prevState.filter(apartment => apartment.id !== id);
+    setApartments(updatedApartmentsArr);
+  }
+
+  // handle favorites
+  const handleFavorite = (id, rentals) => {
+
+    const addedToFav = rentals.find(rental => rental.id === id);
+
+    if (addedToFav.favorite) {
+      // remove from favorites
+      addedToFav.favorite = false;
+
+      setFavorites((prevState) => (prevState.filter(apartment => apartment.id !== id)));
+    }
+    else {
+      // add to favorites
+      addedToFav.favorite = true;
+
+      setFavorites((prevState) => ([addedToFav, ...prevState]))
+    }
   }
 
   // add rental to list of apartments
@@ -65,7 +92,7 @@ function App() {
       ...changedRental,
       ...formInput,
     }
-
+    
     // get copy of previous state
     const prevState = [...apartments];
 
@@ -84,11 +111,12 @@ function App() {
       <section className='content'>
         <Sidebar />
         <Routes>
-          <Route path="/" element={ <DashboardPage handleDelete={handleDelete} apartments={apartments}/>}/>
+          <Route path="/" element={ <DashboardPage handleDelete={handleDelete} apartments={apartments} handleFavorite={handleFavorite} />}/>
           <Route path="/about" element={ <AboutPage /> } />
           <Route path="/details/:apartmentId" element={<DetailsPage  apartments={apartments} />} />
           <Route path="/add-rental" element={ <AddRentalPage handleAddRental={handleAddRental} />} />
           <Route path="/edit-rental/:apartmentId" element={<EditRentalPage apartments={apartments} handleEditRental={handleEditRental} />} />
+          <Route path="/favorites" element={<FavoritesPage favorites={favorites} handleFavorite={handleFavorite} />} />
 
           <Route path="*" element={ <NotFoundPage /> } />
         </Routes>

@@ -1,7 +1,7 @@
 import RentalsList from "../components/RentalsList"
 import { Link } from "react-router-dom";
 
-const DashboardPage = ({ handleDelete, apartments }) => {
+const DashboardPage = ({ handleDelete, apartments, handleFavorite }) => {
     return (
         <div className="dashboard-page">
             
@@ -14,7 +14,7 @@ const DashboardPage = ({ handleDelete, apartments }) => {
                 </Link>
             </div>
             
-            <RentalsList handleDelete={handleDelete} apartments={apartments} />
+            <RentalsList handleDelete={handleDelete} apartments={apartments} handleFavorite={handleFavorite} />
 
         </div>
     )

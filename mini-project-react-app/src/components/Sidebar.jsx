@@ -19,6 +19,14 @@ const Sidebar = () => {
                 "none"
             })}
             >About</NavLink>
+            <NavLink to="/favorites"
+            style={({ isActive }) => ({
+                color: isActive ? "rgb(4, 4, 186)" :
+                "rgb(137, 169, 229)",
+                textDecoration: isActive ? "underline" :
+                "none"
+            })}
+            >Favorites</NavLink>
         </aside>
     )
 }
