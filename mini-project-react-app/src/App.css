@@ -212,7 +212,7 @@ li .btn-div {
   border-bottom: 1px solid rgb(1, 1, 90);
 }
 
-.details-page .description {
+.details-page .description, .about-content, .team-members-div article {
   background-color: rgb(137, 169, 229);
   color: white;
   border: 2px solid rgb(4, 4, 186);
@@ -274,8 +274,16 @@ li .btn-div {
   padding: 0 2rem 2rem;
 }
 
+.about-project h2 {
+  text-align: center;
+}
+
 .about-team h3 {
   text-align: center;
+}
+
+.about-team h2 {
+  margin-bottom: 1rem;
 }
 
 .app-logo {
@@ -286,6 +294,28 @@ li .btn-div {
   text-align: center;
   font-style: italic;
   padding: 4rem 0 15rem;
+}
+
+.about-content { 
+  max-width: 70%;
+}
+
+.about-content > span {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.about-ul {
+  margin: 1rem 0;
+}
+
+.about-ul span {
+  font-weight: bold;
+  color:rgb(4, 4, 186);
+}
+
+.team-members-div article {
+  width: 40%;
 }
 
 /* border: 1px solid rgb(1, 1, 90); */

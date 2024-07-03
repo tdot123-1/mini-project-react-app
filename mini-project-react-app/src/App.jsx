@@ -1,4 +1,3 @@
-// work on 'AboutPage'
 
 import './App.css'
 import Navbar from './components/Navbar'
@@ -30,42 +29,16 @@ function App() {
 
   // handle delete by using array and current array of apartments (rentals)
   const handleDelete = (id) => {
-    // delete from favorites 
-    /* 
-    const updatedFavs = favorites.filter(apartment => apartment.id !== id);
-    setFavorites(updatedFavs);
-    */
 
+    // delete from favorites 
     setFavorites((prevState) => (prevState.filter(apartment => apartment.id !== id)));
 
     // delete from dashboard
-    /*
-    const updatedApartmentsArr = apartments.filter(apartment => apartment.id !== id);
-    setApartments(updatedApartmentsArr);
-    */
-    
     setApartments((prevState) => (prevState.filter(apartment => apartment.id !== id)));
   }
 
   // handle favorites
   const handleFavorite = (id) => {
-
-    /*
-    const addedToFav = rentals.find(rental => rental.id === id);
-
-    if (addedToFav.favorite) {
-      // remove from favorites
-      addedToFav.favorite = false;
-
-      setFavorites((prevState) => (prevState.filter(apartment => apartment.id !== id)));
-    }
-    else {
-      // add to favorites
-      addedToFav.favorite = true;
-
-      setFavorites((prevState) => ([addedToFav, ...prevState]))
-    }
-    */
 
     // handle add/remove from list of favorites
     setFavorites((prevState) => { 
@@ -104,28 +77,6 @@ function App() {
 
   // update existing rental
   const handleEditRental = (formInput, id) => {
-
-    /*
-    // find rental to be changed from array of rentals
-    const changedRental = apartments.find((apartment) => apartment.id === id);
-
-    // populate rental object with existing properties and info from form
-    const updatedRental = {
-      ...changedRental,
-      ...formInput,
-    }
-    
-    // get copy of previous state
-    const prevState = [...apartments];
-
-    //create new array by updating editted apartment and copying the rest of the list 
-    const updatedApartments = prevState.map((apartment) => (
-      apartment.id === id ? 
-      updatedRental : 
-      apartment));
-
-    setApartments(updatedApartments);
-    */
 
     // functional update to apartments state,
     setApartments((prevState) =>
