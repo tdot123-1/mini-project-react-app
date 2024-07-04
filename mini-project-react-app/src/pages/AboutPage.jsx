@@ -24,7 +24,7 @@ const AboutPage = () => {
                 <div className="team-members-div">
                     <article>
                         <h3>Omid</h3>
-                        <p>To be added......</p>
+                        <p>Helllo! I am Omid, a 31 years old Ironhacker to become a full stack developer soon. I was born in Iran and currently I live and work in Germany. It is my first project after getting to learn React and theough this journey I have learned very useful materials to develop a web app. I'll be back soon with more professional apps.</p>
                     </article>
                     <article>
                         <h3>Thomas</h3>
