@@ -47,7 +47,7 @@ const Form = ({ handleFormData, initialState, currentApartment }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="form">
+        <form onSubmit={handleSubmit} className="form" autoComplete="off">
       
             <label>
                 Name:
