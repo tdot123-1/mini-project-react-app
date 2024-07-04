@@ -1,4 +1,3 @@
-
 import './App.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -21,13 +20,11 @@ import { useState } from 'react'
 
 function App() {
 
-  //const apartmentsArr = rentalsData.results;
-
   const [apartments, setApartments] = useState(rentalsData.results);
 
   const [favorites, setFavorites] = useState([]);
 
-  // handle delete by using array and current array of apartments (rentals)
+  // handle delete by using id and filtering out out of state var
   const handleDelete = (id) => {
 
     // delete from favorites 
